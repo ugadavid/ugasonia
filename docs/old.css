@@ -1,0 +1,6 @@
+/* Contenu principal */
+.content {
+  margin-top: 80px; /* Décalage pour éviter le chevauchement avec le menu */
+  padding: 90px;
+  text-align: center;
+}

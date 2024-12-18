@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice : Homophones - CE2</title>
+    <link rel="stylesheet" href="david.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Barre de navigation -->
+        <nav class="side-menu">
+            <div class="site-header">
+                <h1 class="site-title">Kidtionnaire</h1>
+                <img src="logo.png" alt="Logo Kidtionnaire" class="logo">
+            </div>
+            <ul>
+                <li class="menu-item"><a href="index.html">Accueil</a></li>
+                <li class="menu-item"><a href="orthographe.html">Orthographe</a></li>
+                <li class="menu-item"><a href="grammaire.html">Grammaire</a></li>
+                <li class="menu-item"><a href="conjugaison.html">Conjugaison</a></li>
+                <li class="menu-item"><a href="vocabulaire.html">Vocabulaire</a></li>
+                <li class="menu-item"><a href="oral.html">Compréhension de l'oral</a></li>
+            </ul>
+        </nav>
+
+        <!-- Header -->
+        <header class="header">
+            <h1>Découvrons les homophones</h1>
+        </header>
+
+        <main class="container">
+            <!-- Instructions -->
+            <section class="instructions">
+                <p>
+                    Lis ce petit conte et complète-le avec les bons homophones : <strong>ce</strong>, <strong>se</strong>, <strong>ces</strong>, <strong>c'est</strong>, <strong>s'est</strong>, <strong>ses</strong>.
+                </p>
+            </section>
+
+            <!-- Conte -->
+            <section class="exercise">
+                <div class="text">
+                    <p>Il était une fois un petit chien qui s'appelait Max. Un jour, Max a vu __ (ce/ces) joli arbre et a décidé de s'en approcher.</p>
+                    <p>Quand il est arrivé près de l'arbre, il a vu __ (se/s'est) cachée une petite souris. La souris a dit : « Bonjour Max ! »</p>
+                    <p>Max a répondu : « Bonjour ! __ (C'est/se) très gentil de ta part de me parler ! »</p>
+                    <p>Ils ont parlé ensemble pendant longtemps. Max a raconté __ (ses/ces) aventures et la souris a écouté attentivement.</p>
+                    <p>Avant de partir, Max a dit : « __ (Ce/Ses) fut une belle rencontre ! »</p>
+                </div>
+
+                <!-- Zones de glisser-déposer -->
+                <div class="drop-container">
+                    <div class="drop-box" id="box1" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <p>____</p>
+                    </div>
+                    <div class="drop-box" id="box2" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <p>____</p>
+                    </div>
+                    <div class="drop-box" id="box3" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <p>____</p>
+                    </div>
+                    <div class="drop-box" id="box4" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <p>____</p>
+                    </div>
+                    <div class="drop-box" id="box5" ondrop="drop(event)" ondragover="allowDrop(event)">
+                        <p>____</p>
+                    </div>
+                </div>
+
+                <!-- Mots à glisser -->
+                <div class="words-container">
+                    <p class="draggable" id="ce" draggable="true" ondragstart="drag(event)">ce</p>
+                    <p class="draggable" id="se" draggable="true" ondragstart="drag(event)">se</p>
+                    <p class="draggable" id="ces" draggable="true" ondragstart="drag(event)">ces</p>
+                    <p class="draggable" id="cest" draggable="true" ondragstart="drag(event)">c'est</p>
+                    <p class="draggable" id="sest" draggable="true" ondragstart="drag(event)">s'est</p>
+                    <p class="draggable" id="ses" draggable="true" ondragstart="drag(event)">ses</p>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© Kidtionnaire - Apprendre les homophones en s'amusant !</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Fonction pour ajouter la classe "active" au lien correspondant à la page actuelle
+        function setActiveMenuItem() {
+            const path = window.location.pathname; // Récupère le chemin de l'URL
+            const menuItems = document.querySelectorAll('.side-menu .menu-item a');
+
+            menuItems.forEach(item => {
+                const itemPath = new URL(item.href, window.location.origin).pathname; // Pour comparer les URLs
+                 if (itemPath === path) {
+                    item.parentElement.classList.add('active'); // Ajoute la classe "active" au parent du lien
+                }
+            });
+        }
+
+        // Appeler la fonction au chargement de la page
+        window.onload = setActiveMenuItem;
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice : Conjugaison - Futur Simple</title>
+    <link rel="stylesheet" href="david.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Barre de navigation -->
+        <nav class="side-menu">
+            <div class="site-header">
+                <h1 class="site-title">Kidtionnaire</h1>
+                <img src="logo.png" alt="Logo Kidtionnaire" class="logo">
+            </div>
+            <ul>
+                <li class="menu-item"><a href="index.html">Accueil</a></li>
+                <li class="menu-item"><a href="orthographe.html">Orthographe</a></li>
+                <li class="menu-item"><a href="grammaire.html">Grammaire</a></li>
+                <li class="menu-item"><a href="conjugaison.html">Conjugaison</a></li>
+                <li class="menu-item"><a href="vocabulaire.html">Vocabulaire</a></li>
+                <li class="menu-item"><a href="oral.html">Compréhension de l'oral</a></li>
+            </ul>
+        </nav>
+
+        <!-- Header -->
+        <header class="header">
+            <h1>Apprenons le Futur Simple !</h1>
+        </header>
+
+        <main class="container">
+            <!-- Instructions -->
+            <section class="instructions">
+                <div class="instruction-box">
+                    <p>
+                        <strong>Consigne :</strong> Lis les phrases ci-dessous et clique sur la bonne conjugaison au futur simple.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Exercice -->
+            <section class="exercise">
+                <div class="question">
+                    <p class="sentence">Demain, je <button class="option" data-answer="partirai">________</button> en voyage.</p>
+                    <div class="options">
+                        <button class="option" data-answer="partirai">partirai</button>
+                        <button class="option">partiras</button>
+                        <button class="option">partira</button>
+                    </div>
+                </div>
+                <div class="question">
+                    <p class="sentence">Nous <button class="option" data-answer="mangerons">________</button> un délicieux repas.</p>
+                    <div class="options">
+                        <button class="option">mangerai</button>
+                        <button class="option">mangeras</button>
+                        <button class="option" data-answer="mangerons">mangerons</button>
+                    </div>
+                </div>
+                <div class="question">
+                    <p class="sentence">Vous <button class="option" data-answer="regarderez">________</button> un film ce soir.</p>
+                    <div class="options">
+                        <button class="option" data-answer="regarderez">regarderez</button>
+                        <button class="option">regarderons</button>
+                        <button class="option">regardera</button>
+                    </div>
+                </div>
+                <div class="question">
+                    <p class="sentence">Ils <button class="option" data-answer="joueront">________</button> au parc après l'école.</p>
+                    <div class="options">
+                        <button class="option">jouera</button>
+                        <button class="option">jouerez</button>
+                        <button class="option" data-answer="joueront">joueront</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© Kidtionnaire - Apprendre le futur simple en s'amusant !</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Fonction pour ajouter la classe "active" au lien correspondant à la page actuelle
+        function setActiveMenuItem() {
+            const path = window.location.pathname; // Récupère le chemin de l'URL
+            const menuItems = document.querySelectorAll('.side-menu .menu-item a');
+
+            menuItems.forEach(item => {
+                const itemPath = new URL(item.href, window.location.origin).pathname; // Pour comparer les URLs
+                 if (itemPath === path) {
+                    item.parentElement.classList.add('active'); // Ajoute la classe "active" au parent du lien
+                }
+            });
+        }
+
+        // Appeler la fonction au chargement de la page
+        window.onload = setActiveMenuItem;
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercice : Types de Phrases</title>
+    <link rel="stylesheet" href="david.css">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Barre de navigation -->
+        <nav class="side-menu">
+            <div class="site-header">
+               <h1 class="site-title">Kidstionnaire</h1>
+			   <img src="logo.png" alt="Logo Kidtionnaire" class="logo">
+            </div>
+            <ul>
+                <li class="menu-item"><a href="index.html">Accueil</a></li>
+                <li class="menu-item"><a href="orthographe.html">Orthographe</a></li>
+                <li class="menu-item"><a href="grammaire.html">Grammaire</a></li>
+                <li class="menu-item"><a href="conjugaison.html">Conjugaison</a></li>
+                <li class="menu-item"><a href="vocabulaire.html">Vocabulaire</a></li>
+                <li class="menu-item"><a href="oral.html">Compréhension de l'oral</a></li>
+            </ul>
+        </nav>
+    <header class="header">
+        <h1>Découvrons les Types de Phrases !</h1>
+    </header>
+
+    <main class="container">
+        <!-- Instructions -->
+        <section class="instructions">
+            <p>
+                Lis chaque phrase et clique sur la bonne catégorie : <br>
+                <strong>Déclarative</strong>, <strong>Interrogative</strong>, <strong>Exclamative</strong>, ou <strong>Impérative</strong> !
+            </p>
+        </section>
+
+        <!-- Exercices -->
+        <section class="exercise">
+            <div class="question">
+                <p class="sentence">Le soleil brille fort aujourd'hui.</p>
+                <div class="options">
+                    <button class="option">Déclarative</button>
+                    <button class="option">Interrogative</button>
+                    <button class="option">Exclamative</button>
+                    <button class="option">Impérative</button>
+                </div>
+            </div>
+            <div class="question">
+                <p class="sentence">Peux-tu me prêter ton livre ?</p>
+                <div class="options">
+                    <button class="option">Déclarative</button>
+                    <button class="option">Interrogative</button>
+                    <button class="option">Exclamative</button>
+                    <button class="option">Impérative</button>
+                </div>
+            </div>
+            <div class="question">
+                <p class="sentence">Quelle belle journée !</p>
+                <div class="options">
+                    <button class="option">Déclarative</button>
+                    <button class="option">Interrogative</button>
+                    <button class="option">Exclamative</button>
+                    <button class="option">Impérative</button>
+                </div>
+            </div>
+            <div class="question">
+                <p class="sentence">Ferme la porte, s'il te plaît.</p>
+                <div class="options">
+                    <button class="option">Déclarative</button>
+                    <button class="option">Interrogative</button>
+                    <button class="option">Exclamative</button>
+                    <button class="option">Impérative</button>
+                </div>
+            </div>
+        </section>
+        <!-- Bouton Correction -->
+        <div style="text-align:center; margin-top: 20px">
+            <button id="checkAnswers" class="option">Correction</button>
+        </div>
+    </main>
+		
+    <footer class="footer">
+        <p>&copy; Kidtionnaire - Apprendre les types de phrases en s'amusant !</p>
+    </footer>
+    <script src="click-feedback.js"></script>
+    <script>
+        // Fonction pour ajouter la classe "active" au lien correspondant à la page actuelle
+        function setActiveMenuItem() {
+            const path = window.location.pathname; // Récupère le chemin de l'URL
+            const menuItems = document.querySelectorAll('.side-menu .menu-item a');
+
+            menuItems.forEach(item => {
+                const itemPath = new URL(item.href, window.location.origin).pathname; // Pour comparer les URLs
+                 if (itemPath === path) {
+                    item.parentElement.classList.add('active'); // Ajoute la classe "active" au parent du lien
+                }
+            });
+        }
+
+        // Appeler la fonction au chargement de la page
+        window.onload = setActiveMenuItem;
+
+    </script>
+</body>
+</html>

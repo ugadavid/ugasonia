@@ -1,0 +1,140 @@
+/* Global reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif; /* Police moderne */
+  background-color: #ffffff;
+  color: #333;
+}
+
+/* Conteneur principal */
+.container {
+  display: flex;
+  flex-direction: column; /* Menu et contenu en colonne */
+}
+
+/* Barre de navigation */
+.side-menu {
+  background-color: #ffffff;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 10px 20px;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+}
+
+/* Conteneur logo + titre */
+.site-header {
+  display: flex;
+  align-items: center;
+}
+
+/* Logo */
+.logo {
+  width: 110px; /* Ajustez la taille selon votre image */
+  height: auto;
+  margin-right: 10px;
+}
+
+/* Titre du site */
+.site-title {
+  font-family: 'Lobster', cursive;
+  font-size: 3em;
+  color: #4eb8b8;
+  margin: 2px;
+}
+
+/* Menu */
+.side-menu ul {
+  list-style: none;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.side-menu .menu-item {
+  padding: 10px 20px;
+  cursor: pointer;
+  position: relative;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-transform: none; /* Pas de majuscules forcées */
+  transition: all 0.3s ease;
+}
+
+/* Ajout de style pour les liens à l'intérieur du menu */
+.side-menu .menu-item a {
+  text-decoration: none; /* Enlever le soulignement */
+  color: #777; /* Appliquer la couleur souhaitée */
+  transition: color 0.3s ease; /* Transition de la couleur au survol */
+  display: block; /* Pour que le lien prenne toute la surface du li */
+}
+
+/* Carré bleu au survol */
+.side-menu .menu-item:hover a {
+  color: #ffffff; /* Texte blanc au survol */
+}
+
+.side-menu .menu-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: #4eb8b8;
+  transition: width 0.3s ease;
+  z-index: -1;
+}
+
+.side-menu .menu-item:hover::before {
+  width: 100%;
+}
+
+/* Centrer l'image dans le contenu */
+.centered-image {
+  display: block;
+  margin: 20px auto;
+  width: 90%; /* Augmentez la largeur à 90% de la page */
+  max-width: 1000px; /* Vous pouvez ajuster cette taille maximale selon vos besoins */
+  height: auto; /* Hauteur automatique pour conserver les proportions */
+  border-radius: 8px; /* Coins arrondis (optionnel) */
+  box-shadow: none; /* Aucun ombrage */
+}
+
+/* Contenu principal */
+.content {
+  margin-top: 80px; /* Décalage pour éviter le chevauchement avec le menu */
+  padding: 90px;
+  text-align: center;
+}
+
+/* Style du menu item actif */
+.side-menu .menu-item.active a {
+  color: #ffffff; /* Texte blanc quand actif */
+}
+
+.side-menu .menu-item.active::before {
+  width: 100%;
+  background-color: #4eb8b8; /* Background bleu quand actif */
+}
+
+/*  Feedbacks  */
+.option.correct {
+  background-color: #28a745 !important; /* Vert */
+  color: white !important;
+}
+
+.option.incorrect {
+  background-color: #dc3545 !important; /* Rouge */
+  color: white !important;
+}
