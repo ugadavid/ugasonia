@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kidtionnaire</title>
+    <link rel="stylesheet" href="david.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Barre de navigation -->
+        <nav class="side-menu">
+            <div class="site-header">
+                <h1 class="site-title">Kidstionnaire</h1>
+                <img src="logo.png" alt="Logo Kidtionnaire" class="logo">
+            </div>
+            <ul>
+                <li class="menu-item"><a href="index.html">Accueil</a></li>
+                <li class="menu-item"><a href="orthographe.html">Orthographe</a></li>
+                <li class="menu-item"><a href="grammaire.html">Grammaire</a></li>
+                <li class="menu-item"><a href="conjugaison.html">Conjugaison</a></li>
+                <li class="menu-item"><a href="vocabulaire.html">Vocabulaire</a></li>
+                <li class="menu-item"><a href="oral.html">Compréhension de l'oral</a></li>
+            </ul>
+        </nav>
+        <!-- Contenu principal -->
+        <main class="content">
+            <p>Bienvenue sur le Kidtionnaire ! Explorez les fondamentaux du français tout en vous amusant.</p>
+            <!-- Section image -->
+            <img src="image.jpg" alt="Image Kidtionnaire" class="centered-image">
+        </main>
+    </div>
+    <script src="script.js"></script>
+    <script>
+        // Fonction pour ajouter la classe "active" au lien correspondant à la page actuelle
+        function setActiveMenuItem() {
+            const path = window.location.pathname; // Récupère le chemin de l'URL
+            const menuItems = document.querySelectorAll('.side-menu .menu-item a');
+
+            menuItems.forEach(item => {
+                const itemPath = new URL(item.href, window.location.origin).pathname; // Pour comparer les URLs
+                 if (itemPath === path) {
+                    item.parentElement.classList.add('active'); // Ajoute la classe "active" au parent du lien
+                }
+            });
+        }
+
+        // Appeler la fonction au chargement de la page
+        window.onload = setActiveMenuItem;
+
+    </script>
+</body>
+</html>
