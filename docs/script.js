@@ -14,6 +14,7 @@ const gridSize = 10; // Taille de la grille (10x10)
 const gridContainer = document.getElementById("grid");
 const scoreDisplay = document.getElementById("score");
 let score = 0;
+let selectedCells = [];
 
 // Générer la grille de jeu
 function generateGrid() {
@@ -98,7 +99,7 @@ function displayGrid(grid) {
             cellElement.style.fontSize = "16px";
             cellElement.style.cursor = "pointer";
 
-            cellElement.addEventListener("click", () => handleCellClick(rowIndex, colIndex));
+            cellElement.addEventListener("click", () => handleCellClick(rowIndex, colIndex, cellElement));
 
             gridContainer.appendChild(cellElement);
         });
@@ -106,11 +107,55 @@ function displayGrid(grid) {
 }
 
 // Gérer le clic sur une cellule
-function handleCellClick(row, col) {
-    // Exemple : Afficher les coordonnées cliquées
-    console.log(`Case cliquée : [${row}, ${col}]`);
-    // Ajoutez ici la logique pour sélectionner des mots
+function handleCellClick(row, col, cellElement) {
+    if (!cellElement.classList.contains("selected")) {
+        cellElement.classList.add("selected");
+        cellElement.style.backgroundColor = "#aaa";
+        selectedCells.push({ row, col, letter: cellElement.textContent });
+    }
+
+    checkWord();
 }
+
+// Vérifier si une séquence de lettres forme un mot
+function checkWord() {
+    const selectedWord = selectedCells.map(cell => cell.letter).join("");
+
+    for (const wordObj of words) {
+        if (!wordObj.found && wordObj.word === selectedWord) {
+            wordObj.found = true;
+            selectedCells.forEach(cell => {
+                const cellElement = document.querySelector(
+                    `[data-row='${cell.row}'][data-col='${cell.col}']`
+                );
+                cellElement.style.backgroundColor = "#1cae63"; // Fond vert pour les mots trouvés
+            });
+
+            selectedCells = [];
+            score++;
+            scoreDisplay.textContent = score;
+
+            if (words.every(w => w.found)) {
+                setTimeout(() => alert("Félicitations ! Vous avez trouvé tous les mots !"), 200);
+            }
+
+            return;
+        }
+    }
+
+    // Si le mot sélectionné ne correspond à rien, attendre plus de clics
+    if (selectedCells.length > Math.max(...words.map(w => w.word.length))) {
+        selectedCells.forEach(cell => {
+            const cellElement = document.querySelector(
+                `[data-row='${cell.row}'][data-col='${cell.col}']`
+            );
+            cellElement.classList.remove("selected");
+            cellElement.style.backgroundColor = "";
+        });
+        selectedCells = [];
+    }
+}
+
 
 // Réinitialiser le jeu
 function resetGame() {
