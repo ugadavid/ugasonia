@@ -140,7 +140,7 @@ body {
 }
 
 
-#line1 #line2 #line3 #line4 #line5{
+#line1, #line2, #line3, #line4, #line5 {
   padding: 12px;
   border: none;
   border-radius: 4px;
@@ -151,7 +151,7 @@ body {
   font-family: 'Roboto', sans-serif; /* Police moderne */
 }
 
-#line1 #line2 #line3 #line4 #line5 input::placeholder {
+#line1, #line2, #line3, #line4, #line5 input::placeholder {
   color: #888;
   font-style: italic;
   font-family: 'Roboto', sans-serif; /* Police moderne */
