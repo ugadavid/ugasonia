@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kidtionnaire</title>
+    <title>Kidtionnaire - Compréhension de l'oral</title>
     <link rel="stylesheet" href="david.css">
     <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -21,34 +21,75 @@
                 <li class="menu-item"><a href="grammaire.html">Grammaire</a></li>
                 <li class="menu-item"><a href="conjugaison.html">Conjugaison</a></li>
                 <li class="menu-item"><a href="vocabulaire.html">Vocabulaire</a></li>
-                <li class="menu-item"><a href="oral.html">Compréhension de l'oral</a></li>
+                <li class="menu-item active"><a href="oral.html">Compréhension de l'oral</a></li>
             </ul>
         </nav>
+
         <!-- Contenu principal -->
         <main class="content">
-            <p>Bienvenue sur le Kidtionnaire ! Explorez les fondamentaux du français tout en vous amusant.</p>
-            <!-- Section image -->
-            <img src="image.jpg" alt="Image Kidtionnaire" class="centered-image">
+            <h2>Compréhension de l'oral - Timothée, fils du sorcier</h2>
+            <p>Regardez la vidéo suivante, puis répondez aux questions :</p>
+            
+            <!-- Vidéo -->
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/5081A6WzuKk" 
+                    title="Timothée, fils du sorcier" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+                </iframe>
+            </div>
+
+            <!-- Quiz -->
+            <div id="quiz">
+                <p class="question">1. Pourquoi Timothée est-il différent des autres membres de sa famille ?</p>
+                <button class="option" data-correct="false">A. Parce qu’il est un sorcier très puissant.</button>
+                <button class="option" data-correct="true">B. Parce qu’il n’a aucun pouvoir magique.</button>
+                <button class="option" data-correct="false">C. Parce qu’il refuse d’aller à l’école.</button>
+
+                <p class="question">2. Que fait le père de Timothée ?</p>
+                <button class="option" data-correct="true">A. Il prépare des potions magiques.</button>
+                <button class="option" data-correct="false">B. Il élève des animaux fantastiques.</button>
+                <button class="option" data-correct="false">C. Il enseigne la magie dans une école.</button>
+
+                <p class="question">3. Pourquoi Timothée est-il renvoyé de l’école des enfants sorciers ?</p>
+                <button class="option" data-correct="false">A. Parce qu’il est trop méchant.</button>
+                <button class="option" data-correct="true">B. Parce qu’il est trop gentil.</button>
+                <button class="option" data-correct="false">C. Parce qu’il refuse de travailler.</button>
+
+                <p class="question">4. Que fait Timothée en rentrant chez lui ?</p>
+                <button class="option" data-correct="false">A. Il utilise la magie pour punir ses sœurs.</button>
+                <button class="option" data-correct="false">B. Il ignore ce que font ses sœurs.</button>
+                <button class="option" data-correct="true">C. Il aide sa maman en réglant le problème avec ses sœurs sans magie.</button>
+
+                <p class="question">5. Que comprend la famille de Timothée à la fin de l’histoire ?</p>
+                <button class="option" data-correct="false">A. Qu’il doit absolument devenir un sorcier méchant.</button>
+                <button class="option" data-correct="true">B. Qu’il est parfait tel qu’il est, même sans être méchant.</button>
+                <button class="option" data-correct="false">C. Qu’il ne doit plus aller à l’école.</button>
+            </div>
+
+            <p id="feedback"></p>
         </main>
     </div>
-    <script src="script.js"></script>
-    <script>
-        // Fonction pour ajouter la classe "active" au lien correspondant à la page actuelle
-        function setActiveMenuItem() {
-            const path = window.location.pathname; // Récupère le chemin de l'URL
-            const menuItems = document.querySelectorAll('.side-menu .menu-item a');
 
-            menuItems.forEach(item => {
-                const itemPath = new URL(item.href, window.location.origin).pathname; // Pour comparer les URLs
-                 if (itemPath === path) {
-                    item.parentElement.classList.add('active'); // Ajoute la classe "active" au parent du lien
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".option").click(function () {
+                const isCorrect = $(this).data("correct");
+                const feedback = $("#feedback");
+
+                if (isCorrect) {
+                    feedback.text("Bravo ! C'est la bonne réponse.").css("color", "green");
+                } else {
+                    feedback.text("Ce n'est pas la bonne réponse. Essaie encore !").css("color", "red");
                 }
             });
-        }
 
-        // Appeler la fonction au chargement de la page
-        window.onload = setActiveMenuItem;
-
+            // Mettre en surbrillance la page actuelle dans le menu
+            $(".menu-item a").each(function () {
+                if ($(this).attr("href") === window.location.pathname.split("/").pop()) {
+                    $(this).parent().addClass("active");
+                }
+            });
+        });
     </script>
 </body>
 </html>
