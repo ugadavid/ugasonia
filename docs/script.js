@@ -1,50 +1,125 @@
-const options = document.querySelectorAll('.option');
+// script.js
 
-// Fonction pour gérer le clic sur une option
-options.forEach(option => {
-    option.addEventListener('click', () => {
-        // Réinitialise la couleur des autres options dans le même bloc
-        const siblingOptions = option.parentElement.querySelectorAll('.option');
-        siblingOptions.forEach(sibling => {
-            sibling.style.backgroundColor = '#f7f7f7';
-            sibling.style.color = '#4eb8b8';
-        });
+// Configuration initiale
+const words = [
+    { word: "SAPIN", found: false },
+    { word: "CADEAU", found: false },
+    { word: "RENNE", found: false },
+    { word: "NEIGE", found: false },
+    { word: "ETOILE", found: false },
+    { word: "PERE-NOEL", found: false },
+];
 
-        // Applique le style de sélection à l'option cliquée
-        option.style.backgroundColor = '#4eb8b8';
-        option.style.color = 'white';
-    });
-});
-// Permet d'autoriser le glisser-déposer
-function allowDrop(event) {
-    event.preventDefault();
-}
+const gridSize = 10; // Taille de la grille (10x10)
+const gridContainer = document.getElementById("grid");
+const scoreDisplay = document.getElementById("score");
+let score = 0;
 
-// Fonction appelée lors du démarrage du glissement
-function drag(event) {
-    event.dataTransfer.setData("text", event.target.id);
-}
-
-// Fonction pour déposer l'élément dans la zone correspondante
-function drop(event) {
-    event.preventDefault();
-    var data = event.dataTransfer.getData("text");
-    var draggedElement = document.getElementById(data);
-}
-// Générer une grille simple de 8x8 avec des lettres aléatoires
+// Générer la grille de jeu
 function generateGrid() {
-    grid.innerHTML = ""; // Réinitialiser le contenu de la grille
-    const gridSize = 8; // Taille de la grille (8x8)
-    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const grid = Array.from({ length: gridSize }, () => Array(gridSize).fill(""));
 
-    for (let i = 0; i < gridSize * gridSize; i++) {
-        const cell = document.createElement("div");
-        cell.textContent = letters.charAt(Math.floor(Math.random() * letters.length)); // Lettre aléatoire
-        cell.style.textAlign = "center";
-        cell.style.lineHeight = "50px"; // Ajuste la hauteur des cellules
-        grid.appendChild(cell); // Ajoute chaque cellule à la grille
+    // Placer les mots dans la grille
+    words.forEach(({ word }) => placeWordInGrid(word, grid));
+
+    // Remplir les cases vides avec des lettres aléatoires
+    for (let i = 0; i < gridSize; i++) {
+        for (let j = 0; j < gridSize; j++) {
+            if (!grid[i][j]) {
+                grid[i][j] = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+            }
+        }
+    }
+
+    // Afficher la grille dans le DOM
+    displayGrid(grid);
+}
+
+// Placer un mot dans la grille de façon aléatoire
+function placeWordInGrid(word, grid) {
+    const directions = ["horizontal", "vertical", "diagonal"];
+    let placed = false;
+
+    while (!placed) {
+        const direction = directions[Math.floor(Math.random() * directions.length)];
+        const row = Math.floor(Math.random() * gridSize);
+        const col = Math.floor(Math.random() * gridSize);
+        placed = canPlaceWord(word, grid, row, col, direction);
+        if (placed) writeWord(word, grid, row, col, direction);
     }
 }
 
-// Appelez cette fonction pour générer la grille
+// Vérifier si un mot peut être placé
+function canPlaceWord(word, grid, row, col, direction) {
+    if (direction === "horizontal" && col + word.length > gridSize) return false;
+    if (direction === "vertical" && row + word.length > gridSize) return false;
+    if (direction === "diagonal" && (col + word.length > gridSize || row + word.length > gridSize)) return false;
+
+    for (let i = 0; i < word.length; i++) {
+        const newRow = row + (direction === "vertical" || direction === "diagonal" ? i : 0);
+        const newCol = col + (direction === "horizontal" || direction === "diagonal" ? i : 0);
+        if (grid[newRow][newCol] && grid[newRow][newCol] !== word[i]) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+// Placer le mot dans la grille
+function writeWord(word, grid, row, col, direction) {
+    for (let i = 0; i < word.length; i++) {
+        const newRow = row + (direction === "vertical" || direction === "diagonal" ? i : 0);
+        const newCol = col + (direction === "horizontal" || direction === "diagonal" ? i : 0);
+        grid[newRow][newCol] = word[i];
+    }
+}
+
+// Afficher la grille dans le DOM
+function displayGrid(grid) {
+    gridContainer.innerHTML = ""; // Réinitialiser la grille
+    gridContainer.style.display = "grid";
+    gridContainer.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`;
+    gridContainer.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
+    gridContainer.style.gap = "2px";
+
+    grid.forEach((row, rowIndex) => {
+        row.forEach((cell, colIndex) => {
+            const cellElement = document.createElement("div");
+            cellElement.classList.add("cell");
+            cellElement.textContent = cell;
+            cellElement.dataset.row = rowIndex;
+            cellElement.dataset.col = colIndex;
+
+            cellElement.style.display = "flex";
+            cellElement.style.alignItems = "center";
+            cellElement.style.justifyContent = "center";
+            cellElement.style.border = "1px solid #ccc";
+            cellElement.style.fontSize = "16px";
+            cellElement.style.cursor = "pointer";
+
+            cellElement.addEventListener("click", () => handleCellClick(rowIndex, colIndex));
+
+            gridContainer.appendChild(cellElement);
+        });
+    });
+}
+
+// Gérer le clic sur une cellule
+function handleCellClick(row, col) {
+    // Exemple : Afficher les coordonnées cliquées
+    console.log(`Case cliquée : [${row}, ${col}]`);
+    // Ajoutez ici la logique pour sélectionner des mots
+}
+
+// Réinitialiser le jeu
+function resetGame() {
+    score = 0;
+    scoreDisplay.textContent = score;
+    generateGrid();
+}
+
+document.getElementById("reset").addEventListener("click", resetGame);
+
+// Initialiser le jeu
 generateGrid();
