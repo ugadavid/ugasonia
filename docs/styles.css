@@ -98,7 +98,6 @@ body {
 .centered-image {
     display: block;
     margin: 20px auto;
-    width: 90%; /* Augmentez la largeur à 90% de la page */
     max-width: 1000px; /* Vous pouvez ajuster cette taille maximale selon vos besoins */
     height: auto; /* Hauteur automatique pour conserver les proportions */
     border-radius: 8px; /* Coins arrondis (optionnel) */
