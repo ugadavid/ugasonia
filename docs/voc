@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kidtionnaire - Vocabulaire</title>
+    <link rel="stylesheet" href="david.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Barre de navigation -->
+        <nav class="side-menu">
+            <div class="site-header">
+                <h1 class="site-title">Kidstionnaire</h1>
+                <img src="logo.png" alt="Logo Kidtionnaire" class="logo">
+            </div>
+            <ul>
+                <li class="menu-item"><a href="index.html">Accueil</a></li>
+                <li class="menu-item"><a href="orthographe.html">Orthographe</a></li>
+                <li class="menu-item"><a href="grammaire.html">Grammaire</a></li>
+                <li class="menu-item"><a href="conjugaison.html">Conjugaison</a></li>
+                <li class="menu-item active"><a href="vocabulaire.html">Vocabulaire</a></li>
+                <li class="menu-item"><a href="oral.html">Compréhension de l'oral</a></li>
+            </ul>
+        </nav>
+
+        <!-- Contenu principal -->
+        <main class="content">
+            <h2>Vocabulaire - Devinettes Magiques</h2>
+            <p>Devinez la réponse à chaque devinette, recevez un feedback et essayez de faire un score parfait !</p>
+
+            <!-- Section des devinettes -->
+            <div id="quiz">
+                <div class="question-container" data-answer="balai magique">
+                    <p class="question">Je vole dans le ciel avec une sorcière accrochée dessus. Qui suis-je ?</p>
+                    <input type="text" class="answer-input" placeholder="Votre réponse">
+                    <button class="submit-answer">Valider</button>
+                </div>
+
+                <div class="question-container" data-answer="chat noir">
+                    <p class="question">Je suis noir, je miaule, et je suis toujours à côté de la sorcière. Qui suis-je ?</p>
+                    <input type="text" class="answer-input" placeholder="Votre réponse">
+                    <button class="submit-answer">Valider</button>
+                </div>
+
+                <div class="question-container" data-answer="baguette magique">
+                    <p class="question">Je tiens dans la main, je brille parfois et je lance des sorts. Qui suis-je ?</p>
+                    <input type="text" class="answer-input" placeholder="Votre réponse">
+                    <button class="submit-answer">Valider</button>
+                </div>
+
+                <div class="question-container" data-answer="potion magique">
+                    <p class="question">Je bouillonne et je fume. Les sorcières me préparent avec soin pour lancer des sorts. Qui suis-je ?</p>
+                    <input type="text" class="answer-input" placeholder="Votre réponse">
+                    <button class="submit-answer">Valider</button>
+                </div>
+            </div>
+
+            <!-- Score -->
+            <div id="score-container">
+                <p>Score : <span id="score">0</span>/4</p>
+            </div>
+
+            <button id="reset">Réinitialiser</button>
+        </main>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            let score = 0;
+
+            // Validation des réponses
+            $(".submit-answer").click(function () {
+                const container = $(this).closest(".question-container");
+                const userAnswer = container.find(".answer-input").val().toLowerCase().trim();
+                const correctAnswer = container.data("answer");
+
+                if (userAnswer === correctAnswer) {
+                    container.css("background-color", "#d4edda");
+                    container.find(".answer-input").prop("disabled", true);
+                    $(this).prop("disabled", true);
+                    score++;
+                    $("#score").text(score);
+                } else {
+                    container.css("background-color", "#f8d7da");
+                }
+            });
+
+            // Réinitialisation du quiz
+            $("#reset").click(function () {
+                $(".question-container").css("background-color", "white");
+                $(".answer-input").val("").prop("disabled", false);
+                $(".submit-answer").prop("disabled", false);
+                score = 0;
+                $("#score").text(score);
+            });
+
+            // Activer le lien de navigation
+            $(".menu-item a").each(function () {
+                if ($(this).attr("href") === window.location.pathname.split("/").pop()) {
+                    $(this).parent().addClass("active");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
