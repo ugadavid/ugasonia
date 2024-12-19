@@ -42,42 +42,18 @@
 
             <!-- Conte -->
             <section class="exercise">
-                <div class="text">
-                    <p>Il était une fois un petit chien qui s'appelait Max. Un jour, Max a vu <input type="text" name="line1" id="line1" placeholder="____"> (ce/ces) joli arbre et a décidé de s'en approcher.</p>
-                    <p>Quand il est arrivé près de l'arbre, il a vu <input type="text" name="line2" id="line2" placeholder="____"> (se/s'est) cachée une petite souris. La souris a dit : « Bonjour Max ! »</p>
-                    <p>Max a répondu : « Bonjour ! <input type="text" name="line3" id="line3" placeholder="____"> (C'est/se) très gentil de ta part de me parler ! »</p>
-                    <p>Ils ont parlé ensemble pendant longtemps. Max a raconté <input type="text" name="line4" id="line4" placeholder="____"> (ses/ces) aventures et la souris a écouté attentivement.</p>
-                    <p>Avant de partir, Max a dit : « <input type="text" name="line5" id="line5" placeholder="____"> (Ce/Ses) fut une belle rencontre ! »</p>
-                </div>
+                <form action="" method="post">
+                    <div class="text">
+                        <p>Il était une fois un petit chien qui s'appelait Max. Un jour, Max a vu <input type="text" name="line1" id="line1" placeholder="____" size="3"> (ce/ces) joli arbre et a décidé de s'en approcher.</p>
+                        <p>Quand il est arrivé près de l'arbre, il a vu <input type="text" name="line2" id="line2" placeholder="____" size="3"> (se/s'est) cachée une petite souris. La souris a dit : « Bonjour Max ! »</p>
+                        <p>Max a répondu : « Bonjour ! <input type="text" name="line3" id="line3" placeholder="____" size="3"> (C'est/se) très gentil de ta part de me parler ! »</p>
+                        <p>Ils ont parlé ensemble pendant longtemps. Max a raconté <input type="text" name="line4" id="line4" placeholder="____" size="3"> (ses/ces) aventures et la souris a écouté attentivement.</p>
+                        <p>Avant de partir, Max a dit : « <input type="text" name="line5" id="line5" placeholder="____" size="3"> (Ce/Ses) fut une belle rencontre ! »</p>
 
-                <!-- Zones de glisser-déposer -->
-                <div class="drop-container">
-                    <div class="drop-box" id="box1" ondrop="drop(event)" ondragover="allowDrop(event)">
-                        <p>____</p>
+                        <button>Valider</button>
                     </div>
-                    <div class="drop-box" id="box2" ondrop="drop(event)" ondragover="allowDrop(event)">
-                        <p>____</p>
-                    </div>
-                    <div class="drop-box" id="box3" ondrop="drop(event)" ondragover="allowDrop(event)">
-                        <p>____</p>
-                    </div>
-                    <div class="drop-box" id="box4" ondrop="drop(event)" ondragover="allowDrop(event)">
-                        <p>____</p>
-                    </div>
-                    <div class="drop-box" id="box5" ondrop="drop(event)" ondragover="allowDrop(event)">
-                        <p>____</p>
-                    </div>
-                </div>
+                </form>
 
-                <!-- Mots à glisser -->
-                <div class="words-container">
-                    <p class="draggable" id="ce" draggable="true" ondragstart="drag(event)">ce</p>
-                    <p class="draggable" id="se" draggable="true" ondragstart="drag(event)">se</p>
-                    <p class="draggable" id="ces" draggable="true" ondragstart="drag(event)">ces</p>
-                    <p class="draggable" id="cest" draggable="true" ondragstart="drag(event)">c'est</p>
-                    <p class="draggable" id="sest" draggable="true" ondragstart="drag(event)">s'est</p>
-                    <p class="draggable" id="ses" draggable="true" ondragstart="drag(event)">ses</p>
-                </div>
             </section>
         </main>
 
