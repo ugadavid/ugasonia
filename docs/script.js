@@ -31,3 +31,20 @@ function drop(event) {
     var data = event.dataTransfer.getData("text");
     var draggedElement = document.getElementById(data);
 }
+// Générer une grille simple de 8x8 avec des lettres aléatoires
+function generateGrid() {
+    grid.innerHTML = ""; // Réinitialiser le contenu de la grille
+    const gridSize = 8; // Taille de la grille (8x8)
+    const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+    for (let i = 0; i < gridSize * gridSize; i++) {
+        const cell = document.createElement("div");
+        cell.textContent = letters.charAt(Math.floor(Math.random() * letters.length)); // Lettre aléatoire
+        cell.style.textAlign = "center";
+        cell.style.lineHeight = "50px"; // Ajuste la hauteur des cellules
+        grid.appendChild(cell); // Ajoute chaque cellule à la grille
+    }
+}
+
+// Appelez cette fonction pour générer la grille
+generateGrid();
