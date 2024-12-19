@@ -341,3 +341,90 @@ body {
 }
 
 
+/* Grille de mots cachés */
+#grid {
+    display: grid;
+    grid-template-columns: repeat(8, 50px); /* Grille de 8 colonnes */
+    gap: 5px; /* Espacement entre les cellules */
+    justify-content: center;
+    margin: 20px auto; /* Centre la grille */
+    padding: 10px;
+    background-color: #ffffff; /* Fond blanc pour la grille */
+    border: 2px solid #4eb8b8; /* Bordure turquoise */
+    border-radius: 10px; /* Coins arrondis */
+}
+
+/* Cellules de la grille */
+#grid div {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333; /* Texte gris foncé */
+    background-color: #e6f7fb; /* Fond bleu clair */
+    border: 1px solid #4eb8b8; /* Bordure turquoise */
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Cellules sélectionnées */
+#grid div.selected {
+    background-color: #4eb8b8; /* Fond turquoise lorsqu'une lettre est sélectionnée */
+    color: white; /* Texte blanc */
+}
+
+/* Feedback pour les mots trouvés */
+#grid div.found {
+    background-color: #87cefa; /* Bleu clair plus foncé */
+    color: white; /* Texte blanc */
+}
+
+/* Liste des mots */
+#word-list span {
+    display: inline-block;
+    margin: 5px 10px;
+    padding: 8px 15px;
+    background-color: #e6f7fb; /* Fond bleu clair */
+    border: 1px solid #4eb8b8; /* Bordure turquoise */
+    border-radius: 5px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #333;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Mot trouvé */
+#word-list span.found {
+    text-decoration: line-through;
+    background-color: #4eb8b8; /* Fond turquoise */
+    color: white; /* Texte blanc */
+}
+
+/* Bouton de réinitialisation */
+#reset {
+    padding: 10px 20px;
+    background-color: #4eb8b8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#reset:hover {
+    background-color: #3a9c9c;
+    transform: scale(1.05); /* Agrandissement léger au survol */
+	
+}
+#feedback {
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #4eb8b8;
+}
+
+
