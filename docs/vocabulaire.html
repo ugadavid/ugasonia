@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kidtionnaire - Mots Cachés</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Barre de navigation -->
+        <nav class="side-menu">
+            <div class="site-header">
+                <h1 class="site-title">Kidstionnaire</h1>
+                <img src="logo.png" alt="Logo Kidtionnaire" class="logo">
+            </div>
+            <ul>
+                <li class="menu-item"><a href="orthographe.html">Orthographe</a></li>
+                <li class="menu-item"><a href="grammaire.html">Grammaire</a></li>
+                <li class="menu-item"><a href="conjugaison.html">Conjugaison</a></li>
+                <li class="menu-item"><a href="vocabulaire.html">Vocabulaire</a></li>
+                <li class="menu-item"><a href="comprehension-oral.html">Compréhension de l'oral</a></li>
+            </ul>
+        </nav>
+
+        <!-- Contenu principal -->
+        <main class="content">
+            <h2>Jeu de Mots Cachés - Vocabulaire de Noël</h2>
+            <p>Trouvez les mots suivants dans la grille :</p>
+            <div id="word-list">
+                <span id="word-sapin">SAPIN</span>
+                <span id="word-cadeau">CADEAU</span>
+                <span id="word-renne">RENNE</span>
+                <span id="word-neige">NEIGE</span>
+                <span id="word-etoile">ETOILE</span>
+                <span id="word-perenoel">PERE NOEL</span>
+            </div>
+
+            <div id="score-container">
+                <p>Score : <span id="score">0</span></p>
+                <button id="reset">Réinitialiser</button>
+            </div>
+
+            <!-- Grille de jeu -->
+            <div id="grid"></div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
