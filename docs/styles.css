@@ -191,11 +191,12 @@ h1  {
     gap: 10px;
 }
 
-.option {
+.option, .reponse {
     background-color: #f7f7f7;
     border: 2px solid #4eb8b8;
     color: #4eb8b8;
     padding: 10px 15px;
+    margin: 10px;
     font-size: 1em;
     font-weight: bold;
     border-radius: 5px;

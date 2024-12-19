@@ -45,35 +45,39 @@
             <!-- Exercice -->
             <section class="exercise">
                 <div class="question">
-                    <p class="sentence">Demain, je <button class="option" data-answer="partirai">________</button> en voyage.</p>
+                    <p class="sentence">Demain, je <span class="reponse" data-answer="partirai" 
+                        ondragover="event.preventDefault()" ondrop="handleDrop(event)">________</span> en voyage.</p>
                     <div class="options">
-                        <button class="option" data-answer="partirai">partirai</button>
-                        <button class="option">partiras</button>
-                        <button class="option">partira</button>
+                        <button class="option" data-answer="partirai" draggable="true">partirai</button>
+                        <button class="option" draggable="true">partiras</button>
+                        <button class="option" draggable="true">partira</button>
                     </div>
                 </div>
                 <div class="question">
-                    <p class="sentence">Nous <button class="option" data-answer="mangerons">________</button> un délicieux repas.</p>
+                    <p class="sentence">Nous <span class="reponse" data-answer="mangerons"
+                        ondragover="event.preventDefault()" ondrop="handleDrop(event)">________</span> un délicieux repas.</p>
                     <div class="options">
-                        <button class="option">mangerai</button>
-                        <button class="option">mangeras</button>
-                        <button class="option" data-answer="mangerons">mangerons</button>
+                        <button class="option" draggable="true">mangerai</button>
+                        <button class="option" draggable="true">mangeras</button>
+                        <button class="option" data-answer="mangerons" draggable="true">mangerons</button>
                     </div>
                 </div>
                 <div class="question">
-                    <p class="sentence">Vous <button class="option" data-answer="regarderez">________</button> un film ce soir.</p>
+                    <p class="sentence">Vous <span class="reponse" data-answer="regarderez"
+                        ondragover="event.preventDefault()" ondrop="handleDrop(event)">________</span> un film ce soir.</p>
                     <div class="options">
-                        <button class="option" data-answer="regarderez">regarderez</button>
-                        <button class="option">regarderons</button>
-                        <button class="option">regardera</button>
+                        <button class="option" data-answer="regarderez" draggable="true">regarderez</button>
+                        <button class="option" draggable="true">regarderons</button>
+                        <button class="option" draggable="true">regardera</button>
                     </div>
                 </div>
                 <div class="question">
-                    <p class="sentence">Ils <button class="option" data-answer="joueront">________</button> au parc après l'école.</p>
+                    <p class="sentence">Ils <span class="reponse" data-answer="joueront"
+                        ondragover="event.preventDefault()" ondrop="handleDrop(event)">________</span> au parc après l'école.</p>
                     <div class="options">
-                        <button class="option">jouera</button>
-                        <button class="option">jouerez</button>
-                        <button class="option" data-answer="joueront">joueront</button>
+                        <button class="option" draggable="true">jouera</button>
+                        <button class="option" draggable="true">jouerez</button>
+                        <button class="option" data-answer="joueront" draggable="true">joueront</button>
                     </div>
                 </div>
             </section>
@@ -102,6 +106,47 @@
 
         // Appeler la fonction au chargement de la page
         window.onload = setActiveMenuItem;
+
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+    const options = document.querySelectorAll('.option');
+    let draggedOption = null;
+
+    // Gère le début du drag
+    options.forEach(option => {
+        option.addEventListener('dragstart', (event) => {
+            draggedOption = event.target;
+        });
+    });
+
+    // Gère le drop
+    const responses = document.querySelectorAll('.reponse');
+    responses.forEach(response => {
+        response.addEventListener('dragover', (event) => {
+            event.preventDefault(); // Nécessaire pour permettre le drop
+        });
+
+        response.addEventListener('drop', (event) => {
+            event.preventDefault();
+            if (draggedOption) {
+                const correctAnswer = response.dataset.answer;
+                const userAnswer = draggedOption.dataset.answer;
+
+                // Vérifie si la réponse est correcte
+                if (userAnswer === correctAnswer) {
+                    response.textContent = draggedOption.textContent; // Met à jour la réponse
+                    response.style.backgroundColor = 'lightgreen'; // Indique la bonne réponse
+                } else {
+                    response.style.backgroundColor = 'lightcoral'; // Indique une erreur
+                    setTimeout(() => {
+                        response.style.backgroundColor = ''; // Réinitialise la couleur après 1 seconde
+                    }, 1000);
+                }
+            }
+        });
+    });
+});
 
     </script>
 </body>

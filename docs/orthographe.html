@@ -81,6 +81,39 @@
         // Appeler la fonction au chargement de la page
         window.onload = setActiveMenuItem;
 
+
+
+        document.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector('form');
+    const correctAnswers = {
+        line1: 'ce',
+        line2: "s'est",
+        line3: "C'est",
+        line4: 'ses',
+        line5: 'Ce',
+    };
+
+    form.addEventListener('submit', (event) => {
+        event.preventDefault(); // Empêche le rechargement de la page
+
+        let score = 0;
+        const totalQuestions = Object.keys(correctAnswers).length;
+
+        for (const [key, value] of Object.entries(correctAnswers)) {
+            const input = document.getElementById(key);
+            if (input && input.value.trim().toLowerCase() === value.toLowerCase()) {
+                input.style.backgroundColor = 'lightgreen';
+                score++;
+            } else {
+                input.style.backgroundColor = 'lightcoral';
+            }
+        }
+
+        alert(`Vous avez obtenu ${score}/${totalQuestions} réponses correctes.`);
+    });
+});
+
+
     </script>
 </body>
 </html>
