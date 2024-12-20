@@ -2,12 +2,13 @@
 
 // Configuration initiale
 const words = [
-    { word: "SAPIN", found: false },
-    { word: "CADEAU", found: false },
-    { word: "RENNE", found: false },
-    { word: "NEIGE", found: false },
-    { word: "ETOILE", found: false },
-    { word: "PERE-NOEL", found: false },
+    { word: "SORT", found: false },
+    { word: "POTION", found: false },
+    { word: "GRIMOIRE", found: false },
+    { word: "BAGUETTE", found: false },
+    { word: "SORCIER", found: false },
+    { word: "MAGIE", found: false },
+    { word: "DRAGON", found: false },
 ];
 
 const gridSize = 10; // Taille de la grille (10x10)
