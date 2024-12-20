@@ -11,3 +11,36 @@ Depuis, Morgane protège sa forêt et partage parfois ses secrets. "C'est ma mis
 
 grammaire:
 
+Prononce l'incantation et fais apparaître la lumière !
+Comme cette forêt est enchantée et magnifique ! 
+Les étoiles brillent et guident les esprits dans la nuit magique
+La vieille magicienne murmure des sorts devant son miroir enchanté. 
+Quels secrets renferme ce mystérieux grimoire ? 
+
+conjugaison:
+La baguette magique ______ (projette / projettera / projetait) un puissant rayon lumineux.
+
+
+Le dragon enchanté ______ (volera / vole / volait) au-dessus des montagnes pour protéger le trésor.
+
+
+L'apprenti sorcier ______ (mémorisera / mémorise / mémorisait) chaque incantation du vieux grimoire.
+
+
+La forêt mystique ______ (s'animeront / s'animera / s'animait) au coucher du soleil grâce à un ancien sortilège.
+
+
+Les runes gravées sur la pierre ______ (dévoileront / dévoilent / dévoilaient) leur pouvoir caché aux élus
+
+vocabulaire:
+
+SORT
+POTION
+GRIMOIRE
+ENCHANTE
+BAGUETTE
+SORCIER
+MAGIE
+SORTILEGE
+DRAGON
+RUNE
