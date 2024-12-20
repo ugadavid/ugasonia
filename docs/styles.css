@@ -157,27 +157,27 @@ h1 {
 .content-inner {
     display: flex; /* Aligne les éléments enfants sur une ligne */
     align-items: center; /* Centre verticalement l'image et le texte */
-    justify-content: space-between; /* Espace entre les éléments (si besoin) */
-    gap: 20px; /* Espace entre l'image et le texte */
+    justify-content: space-between; /* Espace entre les éléments */
+    gap: 60px; /* Espace entre l'image et le texte */
 }
 
 /* Pour la colonne contenant l'image */
 .image-container {
     flex: 0 0 auto; /* Taille fixe de l'image */
-    max-width: 40%; /* Limite la largeur de l'image (à ajuster selon le besoin) */
+    max-width: 40%; /* Limite la largeur de l'image */
 }
 
 .image-container img {
     width: 100%; /* L'image occupe toute la largeur de son conteneur */
     height: auto; /* Respecte le ratio de l'image */
-    border-radius: 10px; /* Ajoute des coins arrondis (facultatif) */
+    border-radius: 10px; /* Ajoute des coins arrondis */
 }
 
 /* Pour la colonne contenant le texte */
 .text-container {
     flex: 1; /* Prend tout l'espace restant */
     text-align: left; /* Aligne le texte à gauche */
-    font-size: 1.5rem; /* Taille du texte (à ajuster selon le besoin) */
+    font-size: 1.5rem; /* Taille du texte */
     line-height: 1.5; /* Espacement entre les lignes */
 }
 
@@ -205,6 +205,13 @@ h1 {
     50% {
         transform: rotate(-10deg) translateY(-5px);
     }
+}
+
+.home-title {
+    font-family: 'Lobster', cursive;
+    font-size: 1em;
+    color: #4eb8b8;
+    margin: 2px;
 }
 
 
@@ -282,6 +289,7 @@ h1 {
     text-align: center;
     padding: 10px;
     font-size: 1em;
+    width: 1000px;
 }
 
 /* Header */
