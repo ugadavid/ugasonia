@@ -4,7 +4,8 @@ const correctAnswers = [
     "Déclarative",
     "Interrogative",
     "Exclamative",
-    "Impérative"
+    "Impérative",
+    "Déclarative"
 ];
 
 options.forEach((option, index) => {

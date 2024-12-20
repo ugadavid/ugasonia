@@ -1,4 +1,7 @@
 // scoreManager.js
+
+//alert("Fichier lu !");
+
 export const updateScoreDisplay = (scoreElementId) => {
   const scoreElement = document.getElementById(scoreElementId);
   if (!scoreElement) {

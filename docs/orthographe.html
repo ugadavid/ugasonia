@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercice : Homophones - CE2</title>
-    <link rel="stylesheet" href="david.css">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -40,18 +39,27 @@
             </section>
 
             <section class="score">
-                <div id="score"></div>
+                <div id="tscore"></div>
             </section>
 
             <!-- Conte -->
             <section class="exercise">
                 <form action="" method="post">
                     <div class="text">
-                        <p>Il était une fois un petit chien qui s'appelait Max. Un jour, Max a vu <input type="text" name="line1" id="line1" placeholder="____" size="3"> (ce/ces) joli arbre et a décidé de s'en approcher.</p>
-                        <p>Quand il est arrivé près de l'arbre, il a vu <input type="text" name="line2" id="line2" placeholder="____" size="3"> (se/s'est) cachée une petite souris. La souris a dit : « Bonjour Max ! »</p>
-                        <p>Max a répondu : « Bonjour ! <input type="text" name="line3" id="line3" placeholder="____" size="3"> (C'est/se) très gentil de ta part de me parler ! »</p>
-                        <p>Ils ont parlé ensemble pendant longtemps. Max a raconté <input type="text" name="line4" id="line4" placeholder="____" size="3"> (ses/ces) aventures et la souris a écouté attentivement.</p>
-                        <p>Avant de partir, Max a dit : « <input type="text" name="line5" id="line5" placeholder="____" size="3"> (Ce/Ses) fut une belle rencontre ! »</p>
+                        <h2>Le Secret de la Sorcière</h2>
+                        <p>Dans une forêt lointaine, vivait une sorcière nommée Morgane. 
+                            Chaque soir, elle préparait des potions dans son chaudron. 
+                            Un jour, elle trouva un grimoire ancien.</p>
+                        <p>- "Qu'est-ce que <input type="text" name="line1" id="line1" placeholder="____" size="3"> (ce/se) livre ?" pensa-t-elle.<br/>
+                            En l'ouvrant, elle découvrit <input type="text" name="line2" id="line2" placeholder="____" size="3"> (ces/ce) 
+                            sorts dangereux mais puissants.<br/>
+                            Morgane <input type="text" name="line3" id="line3" placeholder="____" size="3">(s'est/c'est) dit :<br/>
+                            - "Je dois maîtriser <input type="text" name="line4" id="line4" placeholder="____" size="3">(ces/ce) 
+                            formules pour protéger <input type="text" name="line5" id="line5" placeholder="____" size="3">(ce/se) lieu magique."</p>
+                        <p>Elle <input type="text" name="line6" id="line6" placeholder="____" size="3"> (s'est/c'est) entraînée sans relâche.<br/>
+                            Un jour, sa chouette déposa une plume dorée.<br/>- "Qu'est-ce que c'est que ça ?" demanda-t-elle.<br/>
+                            <input type="text" name="line7" id="line7" placeholder="____" size="3">(Ces/Ses) objets étaient rares. Grâce à sa plume, elle repoussa une créature maléfique.</p>
+                        <p>Depuis, Morgane protège sa forêt et partage parfois ses secrets. "<input type="text" name="line8" id="line8" placeholder="____" size="3"> (C'est/S'est) ma mission," dit-elle !</p>
                     </div>
                     <div class="center"><button class="btnvalider">Valider</button></div>
                 </form>
@@ -68,84 +76,68 @@
     <div id="modal" class="modal">
         <div class="modal-content">
             <p id="modal-message"></p>
-            <button id="close-modal" class="btnvalider">Fermer</button>
+            <button id="close-modal" class="closeModal">Fermer</button>
         </div>
     </div>
 
-    <script src="script.js"></script>
-    <script>
-        // Fonction pour ajouter la classe "active" au lien correspondant à la page actuelle
-        function setActiveMenuItem() {
-            const path = window.location.pathname; // Récupère le chemin de l'URL
-            const menuItems = document.querySelectorAll('.side-menu .menu-item a');
+    
+    <script src="js/menuManager.js"></script>
+    <script src="js/modal.js"></script>
+    <script type="module">
+        import { updateScoreDisplay } from './js/scoreManager.js';
+        import { saveScore } from './js/scoreManager.js';
+        import { getScore } from './js/scoreManager.js';
+        import { displayModal } from './js/modal.js';
 
-            menuItems.forEach(item => {
-                const itemPath = new URL(item.href, window.location.origin).pathname; // Pour comparer les URLs
-                 if (itemPath === path) {
-                    item.parentElement.classList.add('active'); // Ajoute la classe "active" au parent du lien
+        document.addEventListener('DOMContentLoaded', () => {
+            // Appel de la fonction pour mettre à jour l'affichage du score
+            //updateScoreDisplay('tscore');
+
+            const form = document.querySelector('form');
+            const scoreDiv = document.getElementById('score');
+
+            const correctAnswers = {
+                line1: "ce",
+                line2: "ces",
+                line3: "s'est",
+                line4: "ces",
+                line5: "ce",
+                line6: "s'est",
+                line7: "Ces",
+                line8: "C'est",
+            };
+
+            // Met à jour l'affichage initial
+            updateScoreDisplay();
+
+            // Gestion de la validation du formulaire
+            form.addEventListener('submit', (event) => {
+                event.preventDefault(); // Empêche le rechargement de la page
+
+                let score = 0;
+                const totalQuestions = Object.keys(correctAnswers).length;
+
+                for (const [key, value] of Object.entries(correctAnswers)) {
+                    const input = document.getElementById(key);
+                    if (input && input.value.trim().toLowerCase() === value.toLowerCase()) {
+                        input.style.backgroundColor = 'lightgreen';
+                        score++;
+                    } else {
+                        input.style.backgroundColor = 'lightcoral';
+                    }
                 }
+                //
+                
+                displayModal(score, 8);
+                
+                // Enregistre le score et met à jour l'affichage
+                saveScore(score);
+                //updateScoreDisplay('tscore');
             });
-        }
-
-        // Appeler la fonction au chargement de la page
-        window.onload = setActiveMenuItem;
-
-
-
-
-
-    </script>
-
-<script type="module">
-    import { updateScoreDisplay } from './scoreManager.js';
-
-    document.addEventListener('DOMContentLoaded', () => {
-        // Appel de la fonction pour mettre à jour l'affichage du score
-        updateScoreDisplay('score');
-
-        const form = document.querySelector('form');
-        const modal = document.getElementById('modal');
-        const modalMessage = document.getElementById('modal-message');
-        const closeModalButton = document.getElementById('close-modal');
-        const scoreDiv = document.getElementById('score');
-
-        const correctAnswers = {
-            line1: 'ce',
-            line2: "s'est",
-            line3: "C'est",
-            line4: 'ses',
-            line5: 'Ce',
-        };
-
-        // Met à jour l'affichage initial
-        updateScoreDisplay();
-
-        // Gestion de la validation du formulaire
-        form.addEventListener('submit', (event) => {
-            event.preventDefault(); // Empêche le rechargement de la page
-
-            let score = 0;
-            const totalQuestions = Object.keys(correctAnswers).length;
-
-            for (const [key, value] of Object.entries(correctAnswers)) {
-                const input = document.getElementById(key);
-                if (input && input.value.trim().toLowerCase() === value.toLowerCase()) {
-                    input.style.backgroundColor = 'lightgreen';
-                    score++;
-                } else {
-                    input.style.backgroundColor = 'lightcoral';
-                }
-            }
 
             
-            // Enregistre le score et met à jour l'affichage
-            saveScore(score);
-            updateScoreDisplay('score');
         });
-
-        
-    });
-</script>
+    </script>
 
 </body>
 </html>

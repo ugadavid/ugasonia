@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kidtionnaire</title>
-    <link rel="stylesheet" href="david.css">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -75,24 +74,7 @@
         </div>
     </div>
 
-    <script src="script.js"></script>
-    <script>
-        // Fonction pour ajouter la classe "active" au lien correspondant à la page actuelle
-        function setActiveMenuItem() {
-            const path = window.location.pathname; // Récupère le chemin de l'URL
-            const menuItems = document.querySelectorAll('.side-menu .menu-item a');
-
-            menuItems.forEach(item => {
-                const itemPath = new URL(item.href, window.location.origin).pathname; // Pour comparer les URLs
-                 if (itemPath === path) {
-                    item.parentElement.classList.add('active'); // Ajoute la classe "active" au parent du lien
-                }
-            });
-        }
-
-        // Appeler la fonction au chargement de la page
-        window.onload = setActiveMenuItem;
-
-    </script>
+    <script src="js/vocabulaire.js"></script>
+    <script src="js/menuManager.js"></script>
 </body>
 </html>

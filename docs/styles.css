@@ -13,9 +13,14 @@ body {
 
 /* Conteneur principal */
 .container {
+    flex: 1;
+    padding: 20px;
     display: flex;
-    flex-direction: column; /* Menu et contenu en colonne */
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
+
 
 /* Barre de navigation */
 .side-menu {
@@ -71,6 +76,25 @@ body {
     color: #777;
     text-transform: none; /* Pas de majuscules forcées */
     transition: all 0.3s ease;
+    display: block; /* Rend le lien cliquable sur toute la surface */
+}
+
+/* Ajout de style pour les liens à l'intérieur du menu */
+.side-menu .menu-item a {
+    text-decoration: none; /* Enlever le soulignement */
+    color: #777; /* Appliquer la couleur souhaitée */
+    transition: color 0.3s ease; /* Transition de la couleur au survol */
+    display: block; /* Pour que le lien prenne toute la surface du li */
+  }
+
+  /* Style du menu item actif */
+.side-menu .menu-item.active a {
+  color: #ffffff; /* Texte blanc quand actif */
+}
+
+.side-menu .menu-item.active::before {
+    width: 100%;
+    background-color: #4eb8b8; /* Background bleu quand actif */
 }
 
 /* Carré bleu au survol */
@@ -78,17 +102,17 @@ body {
     color: #ffffff; /* Texte blanc au survol */
 }
 
-    .side-menu .menu-item::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 0;
-        height: 100%;
-        background-color: #4eb8b8;
-        transition: width 0.3s ease;
-        z-index: -1;
-    }
+.side-menu .menu-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background-color: #4eb8b8;
+    transition: width 0.3s ease;
+    z-index: -1;
+}
 
 .side-menu .menu-item:hover::before {
     width: 100%;
@@ -98,53 +122,16 @@ body {
 .centered-image {
     display: block;
     margin: 20px auto;
+    width: 90%; /* Augmentez la largeur à 90% de la page */
     max-width: 1000px; /* Vous pouvez ajuster cette taille maximale selon vos besoins */
     height: auto; /* Hauteur automatique pour conserver les proportions */
     border-radius: 8px; /* Coins arrondis (optionnel) */
     box-shadow: none; /* Aucun ombrage */
-}
+  }
 
-
-
-/* Reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f0f9f9;
-    color: #333;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-/* Header */
-.header {
-    background-color: #4eb8b8;
-    color: white;
-    text-align: center;
-    padding:5px;
-	margin-top: 100px;
-    font-family: 'Amatic SC', cursive;
-    font-size: 3em;
-}
-h1  {
+h1 {
     color: white;
     padding:0 50px 0 50px;
-}
-
-/* Container */
-.container {
-    flex: 1;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
 }
 
 /* Instructions */
@@ -157,7 +144,14 @@ h1  {
     font-family: 'Amatic SC', cursive;
     font-size: 1.5em;
     color: #333;
+    margin-bottom: 20px;
 }
+
+.content {
+    margin-top: 80px; /* Décalage pour éviter le chevauchement avec le menu */
+    padding: 90px;
+    text-align: center;
+  }
 
 /* Exercise Section */
 .exercise {
@@ -166,6 +160,9 @@ h1  {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    align-items: center;
+    padding: 20px;
+    margin-top: 20px;
 }
 
 .question {
@@ -174,6 +171,15 @@ h1  {
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.question2 {
+    background-color: #ffffff;
+    border: 2px solid #4eb8b8;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 660px;
 }
 
 .sentence {
@@ -191,11 +197,15 @@ h1  {
     gap: 10px;
 }
 
+.options2 {
+    justify-content: center;
+}
+
 .option, .reponse {
     background-color: #f7f7f7;
     border: 2px solid #4eb8b8;
     color: #4eb8b8;
-    padding: 10px 15px;
+    padding: 2px 15px;
     margin: 10px;
     font-size: 1em;
     font-weight: bold;
@@ -216,59 +226,21 @@ h1  {
     text-align: center;
     padding: 10px;
     font-size: 1em;
-}/* Global reset */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
 }
 
-/* Police générale */
-body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f9f9f9;
-    color: #333;
-}
-
-/* Conteneur principal */
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* Barre de navigation */
-.side-menu {
-    background-color: #ffffff;
-    border-bottom: 1px solid #ddd;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 10px 20px;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 100;
-}
-
-/* Style du header */
+/* Header */
 .header {
-    margin-top: 120px;
+    background-color: #4eb8b8;
+    color: white;
     text-align: center;
+    padding:5px;
+	margin-top: 100px;
     font-family: 'Amatic SC', cursive;
-    font-size: 2.5em;
-    color: #4eb8b8;
+    font-size: 3em;
 }
 
-/* Zones de glisser-déposer */
-.exercise {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    margin-top: 20px;
-}
+
+
 
 .drop-container {
     display: flex;
@@ -318,21 +290,6 @@ body {
 /* Effet au survol sur les mots */
 .draggable:hover {
     background-color: #3a9c9c;
-}
-
-/* Footer */
-.footer {
-    background-color: #4eb8b8;
-    padding: 10px;
-    color: white;
-    text-align: center;
-    margin-top: 30px;
-}
-
-/* Styles de la zone d'exercice */
-.instructions {
-    font-size: 1.2em;
-    margin-bottom: 20px;
 }
 
 .text p {
@@ -429,3 +386,83 @@ body {
 }
 
 
+
+/*  Feedbacks  */
+.option.correct {
+    background-color: #4eb86c !important; /* Vert */
+    color: white !important;
+  }
+  
+  .option.incorrect {
+    background-color: #e16e79 !important; /* Rouge */
+    color: white !important;
+  }
+  
+  
+  #line1, #line2, #line3, #line4, #line5, #line6, #line7, #line8, #line9 {
+    background-color: #f0f9f9;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    line-height: 1;
+    outline: none;
+    resize: none; /* Désactive le redimensionnement manuel */
+    font-family: 'Roboto', sans-serif; /* Police moderne */
+  }
+  
+  #line1, #line2, #line3, #line4, #line5, #line6, #line7, #line8, #line9 input::placeholder {
+    color: #888;
+    font-style: italic;
+    font-family: 'Roboto', sans-serif; /* Police moderne */
+  }
+  
+  .center {
+    display: block;
+    margin: 0 auto;
+    width: 100%; /* Occuper toute la largeur */
+    text-align: center; /* Centrer le contenu */
+  }
+  
+  .btnvalider, .closeModal {
+    background-color: #f7f7f7;
+    border: 2px solid #4eb8b8;
+    color: #4eb8b8;
+    padding: 10px 15px;
+    margin: 10px;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .btnvalider:hover {
+    background-color: #4eb8b8;
+    color: white;
+  }
+  
+  
+  .modal {
+    display: none; /* Par défaut, la modal est invisible */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fond semi-transparent */
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Au-dessus des autres éléments */
+  }
+  
+  .modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+  }
+  
+  #close-modal {
+    margin-top: 10px;
+  }

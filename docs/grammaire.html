@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Exercice : Types de Phrases</title>
-    <link rel="stylesheet" href="david.css">
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -38,11 +37,14 @@
                 <strong>Déclarative</strong>, <strong>Interrogative</strong>, <strong>Exclamative</strong>, ou <strong>Impérative</strong> !
             </p>
         </section>
+        <section class="score">
+            <div id="score"></div>
+        </section>
 
         <!-- Exercices -->
         <section class="exercise">
             <div class="question">
-                <p class="sentence">Le soleil brille fort aujourd'hui.</p>
+                <p class="sentence">Les étoiles brillent et guident les esprits<br/>dans la nuit magique.</p>
                 <div class="options">
                     <button class="option">Déclarative</button>
                     <button class="option">Interrogative</button>
@@ -51,7 +53,7 @@
                 </div>
             </div>
             <div class="question">
-                <p class="sentence">Peux-tu me prêter ton livre ?</p>
+                <p class="sentence">Quels secrets renferme ce mystérieux grimoire ?</p>
                 <div class="options">
                     <button class="option">Déclarative</button>
                     <button class="option">Interrogative</button>
@@ -60,7 +62,7 @@
                 </div>
             </div>
             <div class="question">
-                <p class="sentence">Quelle belle journée !</p>
+                <p class="sentence">Comme cette forêt est enchantée et magnifique !</p>
                 <div class="options">
                     <button class="option">Déclarative</button>
                     <button class="option">Interrogative</button>
@@ -69,7 +71,16 @@
                 </div>
             </div>
             <div class="question">
-                <p class="sentence">Ferme la porte, s'il te plaît.</p>
+                <p class="sentence">Prononce l'incantation et fais apparaître la lumière !</p>
+                <div class="options">
+                    <button class="option">Déclarative</button>
+                    <button class="option">Interrogative</button>
+                    <button class="option">Exclamative</button>
+                    <button class="option">Impérative</button>
+                </div>
+            </div>
+            <div class="question">
+                <p class="sentence">La vieille magicienne murmure des sorts devant son miroir enchanté.</p>
                 <div class="options">
                     <button class="option">Déclarative</button>
                     <button class="option">Interrogative</button>
@@ -92,24 +103,32 @@
             <button id="close-modal" class="btnvalider">Fermer</button>
         </div>
     </div>
-    <script src="on-the-fly-feedback.js"></script>
-    <script>
-        // Fonction pour ajouter la classe "active" au lien correspondant à la page actuelle
-        function setActiveMenuItem() {
-            const path = window.location.pathname; // Récupère le chemin de l'URL
-            const menuItems = document.querySelectorAll('.side-menu .menu-item a');
-
-            menuItems.forEach(item => {
-                const itemPath = new URL(item.href, window.location.origin).pathname; // Pour comparer les URLs
-                 if (itemPath === path) {
-                    item.parentElement.classList.add('active'); // Ajoute la classe "active" au parent du lien
-                }
-            });
-        }
-
-        // Appeler la fonction au chargement de la page
-        window.onload = setActiveMenuItem;
-
-    </script>
+    <script src="js/on-the-fly-feedback.js"></script>
+    <script src="js/menuManager.js"></script>
+    <script type="module">
+        import { updateScoreDisplay } from './js/scoreManager.js';
+        import { saveScore } from './js/scoreManager.js';
+        import { getScore } from './js/scoreManager.js';
+      
+        document.addEventListener('DOMContentLoaded', () => {
+            // Appel de la fonction pour mettre à jour l'affichage du score
+            updateScoreDisplay('score');
+      
+            const form = document.querySelector('form');
+            const modal = document.getElementById('modal');
+            const modalMessage = document.getElementById('modal-message');
+            const closeModalButton = document.getElementById('close-modal');
+            const scoreDiv = document.getElementById('score');
+            
+            // Met à jour l'affichage initial
+            updateScoreDisplay();
+      
+            // Enregistre le score et met à jour l'affichage
+            saveScore(score);
+            updateScoreDisplay('score');
+      
+            
+        });
+      </script>
 </body>
 </html>
