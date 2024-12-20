@@ -1,3 +1,4 @@
+orthographe
 Le Secret de la Sorcière
 
 Dans une forêt lointaine, vivait une sorcière nommée Morgane. Chaque soir, elle préparait des potions dans son chaudron. Un jour, elle trouva un grimoire ancien.
@@ -7,3 +8,6 @@ Dans une forêt lointaine, vivait une sorcière nommée Morgane. Chaque soir, el
 Elle s'est entraînée sans relâche. Un jour, sa chouette déposa une plume dorée. "Qu'est-ce que ça ?" demanda-t-elle. Ces objets étaient rares. Grâce à sa plume, elle repoussa une créature maléfique.
 
 Depuis, Morgane protège sa forêt et partage parfois ses secrets. "C'est ma mission," dit-elle
+
+grammaire:
+
